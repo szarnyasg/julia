@@ -479,7 +479,6 @@ static void jl_method_set_source(jl_method_t *m, jl_code_info_t *src)
     }
     m->called = called;
     m->pure = src->pure;
-    m->hide_in_stacktrace = src->hide_in_stacktrace;
     jl_linenumber_to_lineinfo(src, (jl_value_t*)m->name);
 
     jl_array_t *copy = NULL;
@@ -591,7 +590,6 @@ JL_DLLEXPORT jl_method_t *jl_new_method_uninit(jl_module_t *module)
     m->invokes = NULL;
     m->isva = 0;
     m->pure = 0;
-    m->hide_in_stacktrace = 0;
     m->nargs = 0;
     m->primary_world = 1;
     m->deleted_world = ~(size_t)0;
